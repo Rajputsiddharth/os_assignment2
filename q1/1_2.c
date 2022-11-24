@@ -11,12 +11,7 @@
 
 int main() {
   pid_t pid1,pid2,pid3;
-  struct sched_param parA, parB, parC;
-  
-  parA.sched_priority = 10;
-  parB.sched_priority = 30;
-  parC.sched_priority = 20;
-  
+
   struct timespec startA, endA;
   
   clock_gettime(CLOCK_REALTIME, &startA);
@@ -24,7 +19,6 @@ int main() {
   
   if (pid1== 0) {
     printf("Child process is running1\n");
-    sched_setscheduler(getpid(),SCHED_OTHER,&parA);
     execl("/bin/bash","sh","compile_kernel1.sh",NULL);
     exit(0);
   } 
@@ -36,7 +30,6 @@ int main() {
     pid2 = fork();
     if (pid2== 0) {
       printf("Child process is running2\n");
-      sched_setscheduler(getpid(),SCHED_RR,&parB);
       execl("/bin/bash","sh","compile_kernel2.sh",NULL);
       exit(0);
     } 
@@ -47,7 +40,6 @@ int main() {
       pid3 = fork();
       if (pid3 == 0) {
         printf("Child process is running3\n");
-        sched_setscheduler(getpid(),SCHED_FIFO,&parC);
         execl("/bin/bash","sh","compile_kernel3.sh",NULL);
         exit(0);
       } 
