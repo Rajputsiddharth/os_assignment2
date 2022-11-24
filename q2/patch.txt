@@ -1,0 +1,20 @@
+//difference between syscall table where we appended the 451 syscall
+diff linux-5.19.8/arch/x86/entry/syscalls/syscall_64.tbl temp_kernel/linux-5.19.8/arch/x86/entry/syscalls/syscall_64.tbl
+
+//difference in directories between two kernels
+374a375
+> 451	common	copy_2Dmatrix		sys_copy_2Dmatrix
+
+//difference in twod_matrix directory between kernels
+1103c1103
+< core-y			+= kernel/ certs/ mm/ fs/ ipc/ security/ crypto/
+---
+> core-y			+= kernel/ certs/ mm/ fs/ ipc/ security/ crypto/ twod_matrix/
+Only in temp_kernel/linux-5.19.8/twod_matrix/: .built-in.a.cmd
+Only in temp_kernel/linux-5.19.8/twod_matrix/: .modules.order.cmd
+Only in temp_kernel/linux-5.19.8/twod_matrix/: .twod_matrix.o.cmd
+Only in temp_kernel/linux-5.19.8/twod_matrix/: Makefile
+Only in temp_kernel/linux-5.19.8/twod_matrix/: built-in.a
+Only in temp_kernel/linux-5.19.8/twod_matrix/: modules.order
+Only in temp_kernel/linux-5.19.8/twod_matrix/: twod_matrix.c
+Only in temp_kernel/linux-5.19.8/twod_matrix/: twod_matrix.o
